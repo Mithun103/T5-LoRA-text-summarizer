@@ -12,11 +12,12 @@ This project demonstrates a complete pipeline for building a summarization syste
 * **Evaluation:** ROUGE metric (Recall-Oriented Understudy for Gisting Evaluation)
 
 ---
-## Hosted Gradio Interface in Huggingface Spaces
-```bash
-https://mithun27-t5-text-summarizer.hf.space/
+### 🚀 Live Demo
 
-```
+Try the model live in your browser!  
+🔗 [**Click here to test the Summarizer App →**](https://your-live-demo-link.com)  
+
+💡 Powered by **Gradio** and hosted on **Hugging Face Spaces**
 ## 📁 Project Structure
 
 ```
