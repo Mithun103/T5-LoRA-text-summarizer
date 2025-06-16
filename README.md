@@ -204,7 +204,7 @@ interface.launch(share=True)
 ### 🚀 Live Demo
 
 Try the model live in your browser!  
-🔗 [**Click here to test the Summarizer App →**]([https://your-live-demo-link.com](https://mithun27-t5-text-summarizer.hf.space))  
+🔗 [**Click here to test the Summarizer App →**](https://mithun27-t5-text-summarizer.hf.space)
 
 💡 Powered by **Gradio** and hosted on **Hugging Face Spaces**
 
