@@ -12,10 +12,6 @@ This project demonstrates a complete pipeline for building a summarization syste
 * **Evaluation:** ROUGE metric (Recall-Oriented Understudy for Gisting Evaluation)
 
 ---
-### 🚀 Live Demo
-
-Try the model live in your browser!  
-🔗 [**Click here to test the Summarizer App →**](https://your-live-demo-link.com)  
 
 💡 Powered by **Gradio** and hosted on **Hugging Face Spaces**
 ## 📁 Project Structure
@@ -203,6 +199,12 @@ interface.launch(share=True)
 ### Gradio Interface Output
 ![image](https://github.com/user-attachments/assets/d0a00741-41e4-4ced-b2db-a114e9f719a3)
 
+---
+### 🚀 Live Demo
+
+Try the model live in your browser!  
+🔗 [**Click here to test the Summarizer App →**](https://your-live-demo-link.com)  
+---
 ## 💡 Use Cases
 
 * News summarization
