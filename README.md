@@ -18,8 +18,7 @@ This project demonstrates a complete pipeline for building a summarization syste
 ```
 t5-text-summarizer/
 ├── full_lora_summarizer/        # Directory to store fine-tuned model
-├── training.py                  # Script for fine-tuning
-├── evaluation.py                # Script for evaluation
+├── LLM_LORA.ipynb               # Notebook for fine-tuning and evaluation
 ├── app.py                       # Gradio interface
 ├── README.md                    # Documentation
 ├── requirements.txt             # Python dependencies
