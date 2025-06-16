@@ -12,7 +12,11 @@ This project demonstrates a complete pipeline for building a summarization syste
 * **Evaluation:** ROUGE metric (Recall-Oriented Understudy for Gisting Evaluation)
 
 ---
+## Hosted Gradio Interface in Huggingface Spaces
+```bash
+https://mithun27-t5-text-summarizer.hf.space/
 
+```
 ## 📁 Project Structure
 
 ```
@@ -146,7 +150,7 @@ for key, value in results.items():
     print(f"{key}: {value:.4f}")
 ```
 
-### Sample Output
+### Eval Output
 
 ```
 📊 ROUGE Evaluation Results:
@@ -195,6 +199,8 @@ interface.launch(share=True)
 ```
 
 ---
+### Gradio Interface Output
+![image](https://github.com/user-attachments/assets/d0a00741-41e4-4ced-b2db-a114e9f719a3)
 
 ## 💡 Use Cases
 
