@@ -199,12 +199,15 @@ interface.launch(share=True)
 ### Gradio Interface Output
 ![image](https://github.com/user-attachments/assets/d0a00741-41e4-4ced-b2db-a114e9f719a3)
 
+
 ---
 ## 🚀 Live Demo
 
 Try the model live in your browser!  
-🔗 [**Click here to test the Summarizer App →**]([https://your-live-demo-link.com](https://mithun27-t5-text-summarizer.hf.space/))  
----
+🔗 [**Click here to test the Summarizer App →**]([https://your-live-demo-link.com](https://mithun27-t5-text-summarizer.hf.space))  
+
+💡 Powered by **Gradio** and hosted on **Hugging Face Spaces**
+
 ## 💡 Use Cases
 
 * News summarization
