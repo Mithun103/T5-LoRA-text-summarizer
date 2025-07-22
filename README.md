@@ -132,29 +132,78 @@ pip install evaluate nltk rouge_score
 ### Evaluation Code
 
 ```python
-from evaluate import load
-import numpy as np
+import torch
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from datasets import load_dataset
+import evaluate
+from tqdm import tqdm
 
-rouge = load("rouge")
-predictions = trainer.predict(tokenized_dataset["validation"].select(range(100)))
-pred_ids = np.argmax(predictions.predictions, axis=-1)
-decoded_preds = tokenizer.batch_decode(pred_ids, skip_special_tokens=True)
-decoded_labels = tokenizer.batch_decode(predictions.label_ids, skip_special_tokens=True)
+# ✅ Load model and tokenizer
+model_path = "./T5-text-summarizer/full_lora_summarizer"  # 🔧 FIXED PATH
+model = AutoModelForSeq2SeqLM.from_pretrained(model_path)
+tokenizer = AutoTokenizer.from_pretrained(model_path)
 
-results = rouge.compute(predictions=decoded_preds, references=decoded_labels)
-print("📊 ROUGE Evaluation Results:")
-for key, value in results.items():
-    print(f"{key}: {value:.4f}")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = model.to(device)
+model.eval()
+
+# ✅ Load test dataset (small subset for quick eval)
+dataset = load_dataset("cnn_dailymail", "3.0.0", split="test[:100]")
+
+# ✅ Load ROUGE metric
+rouge = evaluate.load("rouge")
+
+# 🧪 Store predictions and references
+predictions = []
+references = []
+
+# 🔁 Loop through the dataset
+for example in tqdm(dataset, desc="Evaluating"):
+    article = example["article"]
+    reference = example["highlights"]
+
+    # Tokenize input
+    inputs = tokenizer(
+        "summarize: " + article,
+        return_tensors="pt",
+        max_length=1024,
+        truncation=True,
+        padding="max_length"
+    ).to(device)
+
+    # Generate summary
+    with torch.no_grad():
+        output_ids = model.generate(
+            inputs["input_ids"],
+            attention_mask=inputs["attention_mask"],
+            max_length=150,
+            num_beams=4,
+            early_stopping=True
+        )
+
+    # Decode and store
+    summary = tokenizer.decode(output_ids[0], skip_special_tokens=True)
+    predictions.append(summary.strip())
+    references.append(reference.strip())
+
+# 📊 Compute ROUGE
+results = rouge.compute(predictions=predictions, references=references, use_stemmer=True)
+
+# 📈 Print scores
+print("\n🧾 ROUGE Evaluation Results (F1 Scores on 100 samples):")
+print(f"ROUGE-1: {results['rouge1']:.4f}")
+print(f"ROUGE-2: {results['rouge2']:.4f}")
+print(f"ROUGE-L: {results['rougeL']:.4f}")
+
 ```
 
 ### Eval Output
 
 ```
-📊 ROUGE Evaluation Results:
-rouge1: 0.0036
-rouge2: 0.0000
-rougeL: 0.0036
-rougeLsum: 0.0036
+🧾 ROUGE Evaluation Results (F1 Scores on 100 samples):
+ROUGE-1: 0.3324
+ROUGE-2: 0.1407
+ROUGE-L: 0.2552
 ```
 
 ---
