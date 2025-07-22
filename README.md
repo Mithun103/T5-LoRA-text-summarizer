@@ -140,7 +140,7 @@ import evaluate
 from tqdm import tqdm
 
 # ✅ Load model and tokenizer
-model_path = "./full_lora_summarizer"  # 🔧 FIXED PATH
+model_path = "./full_lora_summarizer" 
 model = AutoModelForSeq2SeqLM.from_pretrained(model_path)
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 
