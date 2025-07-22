@@ -21,6 +21,7 @@ t5-text-summarizer/
 ├── full_lora_summarizer/        # Directory to store fine-tuned model
 ├── LLM_LORA.ipynb               # Notebook for fine-tuning and evaluation
 ├── app.py                       # Gradio interface
+├── eval.py                      # Rouge evaluation     
 ├── README.md                    # Documentation
 ├── requirements.txt             # Python dependencies
 ```
